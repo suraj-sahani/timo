@@ -8,11 +8,15 @@
     "start": "next start",
     "lint:check": "biome check",
     "format:fix": "biome format --write",
-    "format:lint": "biome check --write"
+    "format:lint": "biome check --write",
+    "typecheck": "tsc --noEmit",
+    "typegen": "sanity schema extract --enforce-required-fields && sanity typegen generate"
   },
   "dependencies": {
     "@clerk/nextjs": "^6.36.10",
     "@radix-ui/react-slot": "^1.2.4",
+    "@sanity/client": "^7.14.1",
+    "@sanity/icons": "^3.7.4",
     "@sanity/image-url": "^1.2.0",
     "@sanity/vision": "^4.22.0",
     "class-variance-authority": "^0.7.1",
