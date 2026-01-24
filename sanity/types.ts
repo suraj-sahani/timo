@@ -253,6 +253,106 @@ export type AllSanitySchemaTypes =
   | SanityImageAsset
   | Geopoint;
 export declare const internalGroqTypeReferenceTo: unique symbol;
+// Source: sanity/queries/booking.ts
+// Variable: BOOKINGS_BY_HOST_QUERY
+// Query: *[  _type == "booking"  && host._ref == $hostId] | order(startTime asc) {  _id,  _type,  guestName,  guestEmail,  startTime,  endTime,  notes,  googleEventId,  meetLink}
+export type BOOKINGS_BY_HOST_QUERYResult = Array<{
+  _id: string;
+  _type: "booking";
+  guestName: string;
+  guestEmail: string;
+  startTime: string;
+  endTime: string;
+  notes: string | null;
+  googleEventId: string | null;
+  meetLink: string | null;
+}>;
+// Variable: BOOKINGS_IN_RANGE_QUERY
+// Query: *[  _type == "booking"  && host._ref == $hostId  && startTime >= $startDate  && startTime <= $endDate] | order(startTime asc) {  _id,  startTime,  endTime,  googleEventId,  guestEmail}
+export type BOOKINGS_IN_RANGE_QUERYResult = Array<{
+  _id: string;
+  startTime: string;
+  endTime: string;
+  googleEventId: string | null;
+  guestEmail: string;
+}>;
+// Variable: BOOKING_BY_ID_QUERY
+// Query: *[  _type == "booking"  && _id == $bookingId][0]{  _id,  _type,  host->{    _id,    name,    email  },  guestName,  guestEmail,  startTime,  endTime,  notes,  googleEventId,  meetLink}
+export type BOOKING_BY_ID_QUERYResult = {
+  _id: string;
+  _type: "booking";
+  host: {
+    _id: string;
+    name: string | null;
+    email: string | null;
+  };
+  guestName: string;
+  guestEmail: string;
+  startTime: string;
+  endTime: string;
+  notes: string | null;
+  googleEventId: string | null;
+  meetLink: string | null;
+} | null;
+// Variable: BOOKING_WITH_HOST_CALENDAR_QUERY
+// Query: *[  _type == "booking"  && _id == $bookingId][0]{  _id,  googleEventId,  host->{    _id,    connectedAccounts[isDefault == true][0]{      _key,      accountId,      email,      accessToken,      refreshToken,      expiryDate,      isDefault    }  }}
+export type BOOKING_WITH_HOST_CALENDAR_QUERYResult = {
+  _id: string;
+  googleEventId: string | null;
+  host: {
+    _id: string;
+    connectedAccounts: {
+      _key: string;
+      accountId: string;
+      email: string;
+      accessToken: string | null;
+      refreshToken: string | null;
+      expiryDate: number | null;
+      isDefault: boolean | null;
+    } | null;
+  };
+} | null;
+// Variable: HOST_BOOKINGS_BY_CLERK_ID_QUERY
+// Query: *[  _type == "booking"  && host->clerkId == $clerkId] | order(startTime asc) {  _id,  _type,  guestName,  guestEmail,  startTime,  endTime,  notes,  googleEventId,  meetLink}
+export type HOST_BOOKINGS_BY_CLERK_ID_QUERYResult = Array<{
+  _id: string;
+  _type: "booking";
+  guestName: string;
+  guestEmail: string;
+  startTime: string;
+  endTime: string;
+  notes: string | null;
+  googleEventId: string | null;
+  meetLink: string | null;
+}>;
+// Variable: HOST_UPCOMING_BOOKINGS_QUERY
+// Query: *[  _type == "booking"  && host->clerkId == $clerkId  && startTime >= $startDate] | order(startTime asc) {  _id,  guestName,  guestEmail,  startTime,  endTime,  googleEventId,  meetLink}
+export type HOST_UPCOMING_BOOKINGS_QUERYResult = Array<{
+  _id: string;
+  guestName: string;
+  guestEmail: string;
+  startTime: string;
+  endTime: string;
+  googleEventId: string | null;
+  meetLink: string | null;
+}>;
+// Variable: BOOKINGS_BY_HOST_SLUG_IN_RANGE_QUERY
+// Query: *[  _type == "booking"  && host->slug.current == $hostSlug  && startTime >= $startDate  && startTime <= $endDate] | order(startTime asc) {  _id,  startTime,  endTime}
+export type BOOKINGS_BY_HOST_SLUG_IN_RANGE_QUERYResult = Array<{
+  _id: string;
+  startTime: string;
+  endTime: string;
+}>;
+// Variable: ALL_BOOKINGS_BY_HOST_SLUG_QUERY
+// Query: *[  _type == "booking"  && host->slug.current == $hostSlug] | order(startTime asc) {  _id,  startTime,  endTime,  googleEventId,  guestEmail}
+export type ALL_BOOKINGS_BY_HOST_SLUG_QUERYResult = Array<{
+  _id: string;
+  startTime: string;
+  endTime: string;
+  googleEventId: string | null;
+  guestEmail: string;
+}>;
+
 // Source: sanity/queries/meetingTypes.ts
 // Variable: MEETING_TYPES_BY_HOST_QUERY
 // Query: *[  _type == "meetingType"  && host->clerkId == $clerkId] | order(isDefault desc, name asc) {  _id,  name,  "slug": slug.current,  duration,  description,  isDefault}
@@ -431,6 +531,14 @@ export type USER_SLUG_QUERYResult = {
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
+    '*[\n  _type == "booking"\n  && host._ref == $hostId\n] | order(startTime asc) {\n  _id,\n  _type,\n  guestName,\n  guestEmail,\n  startTime,\n  endTime,\n  notes,\n  googleEventId,\n  meetLink\n}': BOOKINGS_BY_HOST_QUERYResult;
+    '*[\n  _type == "booking"\n  && host._ref == $hostId\n  && startTime >= $startDate\n  && startTime <= $endDate\n] | order(startTime asc) {\n  _id,\n  startTime,\n  endTime,\n  googleEventId,\n  guestEmail\n}': BOOKINGS_IN_RANGE_QUERYResult;
+    '*[\n  _type == "booking"\n  && _id == $bookingId\n][0]{\n  _id,\n  _type,\n  host->{\n    _id,\n    name,\n    email\n  },\n  guestName,\n  guestEmail,\n  startTime,\n  endTime,\n  notes,\n  googleEventId,\n  meetLink\n}': BOOKING_BY_ID_QUERYResult;
+    '*[\n  _type == "booking"\n  && _id == $bookingId\n][0]{\n  _id,\n  googleEventId,\n  host->{\n    _id,\n    connectedAccounts[isDefault == true][0]{\n      _key,\n      accountId,\n      email,\n      accessToken,\n      refreshToken,\n      expiryDate,\n      isDefault\n    }\n  }\n}': BOOKING_WITH_HOST_CALENDAR_QUERYResult;
+    '*[\n  _type == "booking"\n  && host->clerkId == $clerkId\n] | order(startTime asc) {\n  _id,\n  _type,\n  guestName,\n  guestEmail,\n  startTime,\n  endTime,\n  notes,\n  googleEventId,\n  meetLink\n}': HOST_BOOKINGS_BY_CLERK_ID_QUERYResult;
+    '*[\n  _type == "booking"\n  && host->clerkId == $clerkId\n  && startTime >= $startDate\n] | order(startTime asc) {\n  _id,\n  guestName,\n  guestEmail,\n  startTime,\n  endTime,\n  googleEventId,\n  meetLink\n}': HOST_UPCOMING_BOOKINGS_QUERYResult;
+    '*[\n  _type == "booking"\n  && host->slug.current == $hostSlug\n  && startTime >= $startDate\n  && startTime <= $endDate\n] | order(startTime asc) {\n  _id,\n  startTime,\n  endTime\n}': BOOKINGS_BY_HOST_SLUG_IN_RANGE_QUERYResult;
+    '*[\n  _type == "booking"\n  && host->slug.current == $hostSlug\n] | order(startTime asc) {\n  _id,\n  startTime,\n  endTime,\n  googleEventId,\n  guestEmail\n}': ALL_BOOKINGS_BY_HOST_SLUG_QUERYResult;
     '*[\n  _type == "meetingType"\n  && host->clerkId == $clerkId\n] | order(isDefault desc, name asc) {\n  _id,\n  name,\n  "slug": slug.current,\n  duration,\n  description,\n  isDefault\n}': MEETING_TYPES_BY_HOST_QUERYResult;
     '*[\n  _type == "meetingType"\n  && host->slug.current == $hostSlug\n  && slug.current == $meetingTypeSlug\n][0] {\n  _id,\n  name,\n  "slug": slug.current,\n  duration,\n  description,\n  host-> {\n    _id,\n    name,\n    email,\n    "slug": slug.current,\n    availability[] {\n      _key,\n      startDateTime,\n      endDateTime\n    },\n    connectedAccounts[] {\n      _key,\n      accountId,\n      email,\n      isDefault,\n      accessToken,\n      refreshToken,\n      expiryDate\n    }\n  }\n}': MEETING_TYPE_BY_SLUGS_QUERYResult;
     '*[\n  _type == "meetingType"\n  && host->slug.current == $hostSlug\n] | order(isDefault desc, name asc) {\n  _id,\n  name,\n  "slug": slug.current,\n  duration,\n  description,\n  isDefault\n}': MEETING_TYPES_BY_HOST_SLUG_QUERYResult;

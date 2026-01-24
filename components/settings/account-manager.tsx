@@ -4,7 +4,7 @@ import { ArrowRight, Loader2, Plus, Star, Trash2 } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
-import { FcGoogle } from "react-icons/fc";
+
 import { Button } from "@/components/ui/button";
 import {
   disconnectGoogleAccount,
@@ -12,6 +12,7 @@ import {
 } from "@/lib/actions/calendar";
 import type { PlanType } from "@/lib/features";
 import type { ConnectedAccountDisplay } from "@/sanity/queries/user";
+import Image from "next/image";
 
 interface AccountManagerProps {
   connectedAccounts: ConnectedAccountDisplay[];
@@ -34,7 +35,8 @@ export function AccountManager({
 
   const handleConnect = () => {
     // Redirect to OAuth connect endpoint
-    window.location.href = "/api/calendar/connect";
+    // window.location.href = "/api/calendar/connect";
+    router.push("/api/calendar/connect");
   };
 
   const handleDisconnect = async (accountKey: string) => {
@@ -110,7 +112,13 @@ export function AccountManager({
             >
               <div className="flex items-center gap-3">
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100">
-                  <FcGoogle className="h-5 w-5" />
+                  <Image
+                    src="/google.svg"
+                    alt="Google logo"
+                    width={24}
+                    height={24}
+                    className="h-5 w-5"
+                  />
                 </div>
                 <div>
                   <p className="font-medium">{account.email}</p>
