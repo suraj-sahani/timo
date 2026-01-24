@@ -1,10 +1,10 @@
-import { getUserPlanLimits } from "@/lib/features";
-import { sanityFetch } from "@/sanity/lib/live";
-import { USER_CONNECTED_ACCOUNTS_DISPLAY_QUERY } from "@/sanity/queries/user";
 import { auth } from "@clerk/nextjs/server";
 import { CreditCard } from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import { getUserPlanLimits } from "@/lib/features";
+import { sanityFetch } from "@/sanity/lib/live";
+import { USER_CONNECTED_ACCOUNTS_DISPLAY_QUERY } from "@/sanity/queries/user";
 
 export default async function SettingsPage({
   searchParams,
