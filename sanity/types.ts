@@ -110,16 +110,12 @@ export type User = {
   name?: string;
   email?: string;
   slug?: Slug;
-  availability?: Array<
-    {
-      _key: string;
-    } & AvailabilitySlot
-  >;
-  connectedAccounts?: Array<
-    {
-      _key: string;
-    } & ConnectedAccount
-  >;
+  availability?: Array<{
+    _key: string;
+  } & AvailabilitySlot>;
+  connectedAccounts?: Array<{
+    _key: string;
+  } & ConnectedAccount>;
 };
 
 export type SanityImagePaletteSwatch = {
@@ -234,26 +230,110 @@ export type Geopoint = {
   alt?: number;
 };
 
-export type AllSanitySchemaTypes =
-  | AvailabilitySlot
-  | ConnectedAccount
-  | Feedback
-  | Booking
-  | MeetingType
-  | Slug
-  | User
-  | SanityImagePaletteSwatch
-  | SanityImagePalette
-  | SanityImageDimensions
-  | SanityImageMetadata
-  | SanityImageHotspot
-  | SanityImageCrop
-  | SanityFileAsset
-  | SanityAssetSourceData
-  | SanityImageAsset
-  | Geopoint;
+export type AllSanitySchemaTypes = AvailabilitySlot | ConnectedAccount | Feedback | Booking | MeetingType | Slug | User | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageMetadata | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityAssetSourceData | SanityImageAsset | Geopoint;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: sanity/queries/user.ts
+// Variable: USER_BY_CLERK_ID_QUERY
+// Query: *[  _type == "user"  && clerkId == $clerkId][0]{  _id,  _type,  clerkId,  name,  email,  slug,  availability[]{    _key,    startDateTime,    endDateTime  },  connectedAccounts[]{    _key,    accountId,    email,    provider,    isDefault,    connectedAt  }}
+export type USER_BY_CLERK_ID_QUERYResult = {
+  _id: string;
+  _type: "user";
+  clerkId: string;
+  name: string | null;
+  email: string | null;
+  slug: Slug | null;
+  availability: Array<{
+    _key: string;
+    startDateTime: string;
+    endDateTime: string;
+  }> | null;
+  connectedAccounts: Array<{
+    _key: string;
+    accountId: string;
+    email: string;
+    provider: "google" | null;
+    isDefault: boolean | null;
+    connectedAt: string | null;
+  }> | null;
+} | null;
+// Variable: USER_BY_SLUG_QUERY
+// Query: *[  _type == "user"  && slug.current == $slug][0]{  _id,  _type,  name,  email,  slug,  availability[]{    _key,    startDateTime,    endDateTime  }}
+export type USER_BY_SLUG_QUERYResult = {
+  _id: string;
+  _type: "user";
+  name: string | null;
+  email: string | null;
+  slug: Slug | null;
+  availability: Array<{
+    _key: string;
+    startDateTime: string;
+    endDateTime: string;
+  }> | null;
+} | null;
+// Variable: USER_WITH_TOKENS_QUERY
+// Query: *[  _type == "user"  && clerkId == $clerkId][0]{  _id,  connectedAccounts[]{    _key,    accountId,    email,    accessToken,    refreshToken,    expiryDate,    isDefault  }}
+export type USER_WITH_TOKENS_QUERYResult = {
+  _id: string;
+  connectedAccounts: Array<{
+    _key: string;
+    accountId: string;
+    email: string;
+    accessToken: string | null;
+    refreshToken: string | null;
+    expiryDate: number | null;
+    isDefault: boolean | null;
+  }> | null;
+} | null;
+// Variable: USER_ID_BY_ACCOUNT_KEY_QUERY
+// Query: *[  _type == "user"  && defined(connectedAccounts[_key == $accountKey])][0]{  _id}
+export type USER_ID_BY_ACCOUNT_KEY_QUERYResult = {
+  _id: string;
+} | null;
+// Variable: USER_ID_BY_CLERK_ID_QUERY
+// Query: *[  _type == "user"  && clerkId == $clerkId][0]{  _id}
+export type USER_ID_BY_CLERK_ID_QUERYResult = {
+  _id: string;
+} | null;
+// Variable: USER_WITH_AVAILABILITY_QUERY
+// Query: *[  _type == "user"  && clerkId == $clerkId][0]{  _id,  availability[]{    _key,    startDateTime,    endDateTime  }}
+export type USER_WITH_AVAILABILITY_QUERYResult = {
+  _id: string;
+  availability: Array<{
+    _key: string;
+    startDateTime: string;
+    endDateTime: string;
+  }> | null;
+} | null;
+// Variable: USER_WITH_CONNECTED_ACCOUNTS_QUERY
+// Query: *[  _type == "user"  && clerkId == $clerkId][0]{  _id,  connectedAccounts[]{    accountId  }}
+export type USER_WITH_CONNECTED_ACCOUNTS_QUERYResult = {
+  _id: string;
+  connectedAccounts: Array<{
+    accountId: string;
+  }> | null;
+} | null;
+// Variable: HOST_BY_SLUG_WITH_TOKENS_QUERY
+// Query: *[  _type == "user"  && slug.current == $slug][0]{  _id,  name,  email,  slug,  availability[]{    _key,    startDateTime,    endDateTime  },  connectedAccounts[]{    _key,    accountId,    email,    accessToken,    refreshToken,    expiryDate,    isDefault  }}
+export type HOST_BY_SLUG_WITH_TOKENS_QUERYResult = {
+  _id: string;
+  name: string | null;
+  email: string | null;
+  slug: Slug | null;
+  availability: Array<{
+    _key: string;
+    startDateTime: string;
+    endDateTime: string;
+  }> | null;
+  connectedAccounts: Array<{
+    _key: string;
+    accountId: string;
+    email: string;
+    accessToken: string | null;
+    refreshToken: string | null;
+    expiryDate: number | null;
+    isDefault: boolean | null;
+  }> | null;
+} | null;
 // Variable: USER_CONNECTED_ACCOUNTS_DISPLAY_QUERY
 // Query: *[  _type == "user"  && clerkId == $clerkId][0]{  connectedAccounts[]{    _key,    accountId,    email,    isDefault  }}
 export type USER_CONNECTED_ACCOUNTS_DISPLAY_QUERYResult = {
@@ -264,11 +344,27 @@ export type USER_CONNECTED_ACCOUNTS_DISPLAY_QUERYResult = {
     isDefault: boolean | null;
   }> | null;
 } | null;
+// Variable: USER_SLUG_QUERY
+// Query: *[  _type == "user"  && clerkId == $clerkId][0]{  _id,  name,  slug}
+export type USER_SLUG_QUERYResult = {
+  _id: string;
+  name: string | null;
+  slug: Slug | null;
+} | null;
 
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    '*[\n  _type == "user"\n  && clerkId == $clerkId\n][0]{\n  connectedAccounts[]{\n    _key,\n    accountId,\n    email,\n    isDefault\n  }\n}': USER_CONNECTED_ACCOUNTS_DISPLAY_QUERYResult;
+    "*[\n  _type == \"user\"\n  && clerkId == $clerkId\n][0]{\n  _id,\n  _type,\n  clerkId,\n  name,\n  email,\n  slug,\n  availability[]{\n    _key,\n    startDateTime,\n    endDateTime\n  },\n  connectedAccounts[]{\n    _key,\n    accountId,\n    email,\n    provider,\n    isDefault,\n    connectedAt\n  }\n}": USER_BY_CLERK_ID_QUERYResult;
+    "*[\n  _type == \"user\"\n  && slug.current == $slug\n][0]{\n  _id,\n  _type,\n  name,\n  email,\n  slug,\n  availability[]{\n    _key,\n    startDateTime,\n    endDateTime\n  }\n}": USER_BY_SLUG_QUERYResult;
+    "*[\n  _type == \"user\"\n  && clerkId == $clerkId\n][0]{\n  _id,\n  connectedAccounts[]{\n    _key,\n    accountId,\n    email,\n    accessToken,\n    refreshToken,\n    expiryDate,\n    isDefault\n  }\n}": USER_WITH_TOKENS_QUERYResult;
+    "*[\n  _type == \"user\"\n  && defined(connectedAccounts[_key == $accountKey])\n][0]{\n  _id\n}": USER_ID_BY_ACCOUNT_KEY_QUERYResult;
+    "*[\n  _type == \"user\"\n  && clerkId == $clerkId\n][0]{\n  _id\n}": USER_ID_BY_CLERK_ID_QUERYResult;
+    "*[\n  _type == \"user\"\n  && clerkId == $clerkId\n][0]{\n  _id,\n  availability[]{\n    _key,\n    startDateTime,\n    endDateTime\n  }\n}": USER_WITH_AVAILABILITY_QUERYResult;
+    "*[\n  _type == \"user\"\n  && clerkId == $clerkId\n][0]{\n  _id,\n  connectedAccounts[]{\n    accountId\n  }\n}": USER_WITH_CONNECTED_ACCOUNTS_QUERYResult;
+    "*[\n  _type == \"user\"\n  && slug.current == $slug\n][0]{\n  _id,\n  name,\n  email,\n  slug,\n  availability[]{\n    _key,\n    startDateTime,\n    endDateTime\n  },\n  connectedAccounts[]{\n    _key,\n    accountId,\n    email,\n    accessToken,\n    refreshToken,\n    expiryDate,\n    isDefault\n  }\n}": HOST_BY_SLUG_WITH_TOKENS_QUERYResult;
+    "*[\n  _type == \"user\"\n  && clerkId == $clerkId\n][0]{\n  connectedAccounts[]{\n    _key,\n    accountId,\n    email,\n    isDefault\n  }\n}": USER_CONNECTED_ACCOUNTS_DISPLAY_QUERYResult;
+    "*[\n  _type == \"user\"\n  && clerkId == $clerkId\n][0]{\n  _id,\n  name,\n  slug\n}": USER_SLUG_QUERYResult;
   }
 }
