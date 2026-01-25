@@ -1,8 +1,10 @@
 "use server";
 
 import { client } from "@/sanity/lib/client";
+import { mutateClient } from "@/sanity/lib/mutate-client";
 import { USER_WITH_TOKENS_QUERY } from "@/sanity/queries/user";
 import { auth } from "@clerk/nextjs/server";
+import { revokeGoogleToken } from "../google-calendar";
 
 /**
  * Disconnect a Google account
@@ -32,7 +34,7 @@ export async function disconnectGoogleAccount(
   );
 
   // Remove the account from Sanity
-  await writeClient
+  await mutateClient
     .patch(user._id)
     .unset([`connectedAccounts[_key=="${accountKey}"]`])
     .commit();
@@ -41,7 +43,7 @@ export async function disconnectGoogleAccount(
   // set the first remaining account as default
   if (wasDefault && remainingAccounts && remainingAccounts.length > 0) {
     const newDefaultKey = remainingAccounts[0]._key;
-    await writeClient
+    await mutateClient
       .patch(user._id)
       .set({
         [`connectedAccounts[_key=="${newDefaultKey}"].isDefault`]: true,
@@ -70,7 +72,7 @@ export async function setDefaultCalendarAccount(
   // We need to do this in two patches to avoid conflicts
   for (const acc of user.connectedAccounts ?? []) {
     if (acc._key !== accountKey && acc.isDefault) {
-      await writeClient
+      await mutateClient
         .patch(user._id)
         .set({
           [`connectedAccounts[_key=="${acc._key}"].isDefault`]: false,
@@ -80,7 +82,7 @@ export async function setDefaultCalendarAccount(
   }
 
   // Set the target account as default
-  await writeClient
+  await mutateClient
     .patch(user._id)
     .set({
       [`connectedAccounts[_key=="${accountKey}"].isDefault`]: true,
