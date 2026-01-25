@@ -1,10 +1,10 @@
 "use client";
 
 import { ArrowRight, Loader2, Plus, Star, Trash2 } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
-
 import { Button } from "@/components/ui/button";
 import {
   disconnectGoogleAccount,
@@ -12,7 +12,6 @@ import {
 } from "@/lib/actions/calendar";
 import type { PlanType } from "@/lib/features";
 import type { ConnectedAccountDisplay } from "@/sanity/queries/user";
-import Image from "next/image";
 
 interface AccountManagerProps {
   connectedAccounts: ConnectedAccountDisplay[];
