@@ -1,11 +1,11 @@
-import { type NextRequest, NextResponse } from "next/server";
 import { auth } from "@clerk/nextjs/server";
+import { type NextRequest, NextResponse } from "next/server";
 import {
   exchangeCodeForTokens,
   getGoogleUserInfo,
 } from "@/lib/google-calendar";
-import { mutateClient } from "@/sanity/lib/mutate-client";
 import { client } from "@/sanity/lib/client";
+import { mutateClient } from "@/sanity/lib/mutate-client";
 import { USER_WITH_CONNECTED_ACCOUNTS_QUERY } from "@/sanity/queries/user";
 
 export async function GET(request: NextRequest) {
