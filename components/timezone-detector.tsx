@@ -13,13 +13,13 @@ export function TimezoneDetector() {
   useEffect(() => {
     (async () => {
       try {
-        const timezone = await fetch("/api/timezone");
+        const timezone = await fetch(
+          `${process.env.NEXT_PUBLIC_SERVER_URL}/api/timezone`,
+        );
 
         if (!timezone.ok) {
           throw new Error("Failed to get user's timezone");
         }
-        const data = await timezone.json();
-        console.log("User timezone:", data);
       } catch (error) {
         console.error("Failed to get user's timezone:", error);
       }
