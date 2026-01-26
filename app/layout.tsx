@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Providers from "@/providers";
 import "./globals.css";
 import { SanityLive } from "@/sanity/lib/live";
+import { TimezoneDetector } from "@/components/timezone-detector";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,6 +33,7 @@ export default function RootLayout({
         >
           {children}
           <SanityLive />
+          <TimezoneDetector />
         </body>
       </html>
     </Providers>
