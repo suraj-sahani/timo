@@ -1,12 +1,12 @@
 "use client";
 
 import { Suspense } from "react";
+import { BookingTrendCard } from "@/components/admin/analytics/booking-trend";
+import { ConnectedAccountsCard } from "@/components/admin/analytics/connected-accounts";
+import { MostBookedDayCard } from "@/components/admin/analytics/most-booked-day";
 import { NewUsersCard } from "@/components/admin/analytics/new-users";
 import { TotalBookingsCard } from "@/components/admin/analytics/total-bookings";
-import { MostBookedDayCard } from "@/components/admin/analytics/most-booked-day";
 import { TotalMeetingTypesCard } from "@/components/admin/analytics/total-meeting-types";
-import { ConnectedAccountsCard } from "@/components/admin/analytics/connected-accounts";
-import { BookingTrendCard } from "@/components/admin/analytics/booking-trend";
 import { Card, CardContent } from "@/components/ui/card";
 import { Spinner } from "@/components/ui/spinner";
 

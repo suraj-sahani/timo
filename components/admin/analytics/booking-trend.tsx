@@ -1,18 +1,18 @@
 "use client";
 
-import { Suspense, useState, useCallback, useEffect, useMemo } from "react";
 import {
-  useDocuments,
-  useDocumentProjection,
   type DocumentHandle,
+  useDocumentProjection,
+  useDocuments,
 } from "@sanity/sdk-react";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import {
-  TrendingUpIcon,
-  TrendingDownIcon,
-  MinusIcon,
   CalendarCheckIcon,
+  MinusIcon,
+  TrendingDownIcon,
+  TrendingUpIcon,
 } from "lucide-react";
+import { Suspense, useCallback, useEffect, useMemo, useState } from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 interface BookingProjection {
   startTime: string | null;
