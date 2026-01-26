@@ -1,57 +1,56 @@
 "use client";
 
+import { differenceInMinutes, format, isBefore, startOfDay } from "date-fns";
+import {
+  Clock,
+  ExternalLink,
+  Loader2,
+  Mail,
+  Save,
+  Undo2,
+  User,
+  Video,
+} from "lucide-react";
 import { useState, useTransition } from "react";
-import { Calendar, Views, type View } from "react-big-calendar";
+import { Calendar, type View, Views } from "react-big-calendar";
 import withDragAndDrop, {
   type EventInteractionArgs,
 } from "react-big-calendar/lib/addons/dragAndDrop";
-import {
-  Loader2,
-  Save,
-  Undo2,
-  Clock,
-  User,
-  Mail,
-  Video,
-  ExternalLink,
-} from "lucide-react";
-import { format, differenceInMinutes, isBefore, startOfDay } from "date-fns";
-
-import {
-  CALENDAR_CONFIG,
-  MAX_TIME,
-  MIN_TIME,
-  AVAILABILITY_COLORS,
-  BUSY_BLOCK_COLORS,
-  BOOKING_STATUS_COLORS,
-} from "@/lib/constants";
-import {
-  calendarFormats,
-  calendarMessages,
-  formatTimeRange,
-} from "@/lib/format";
-import { useCalendarEvents } from "@/hooks/use-calendar-events";
-
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
+import { useCalendarEvents } from "@/hooks/use-calendar-events";
+import {
+  AVAILABILITY_COLORS,
+  BOOKING_STATUS_COLORS,
+  BUSY_BLOCK_COLORS,
+  CALENDAR_CONFIG,
+  MAX_TIME,
+  MIN_TIME,
+} from "@/lib/constants";
+import {
+  calendarFormats,
+  calendarMessages,
+  formatTimeRange,
+} from "@/lib/format";
 
 import type {
-  TimeBlock,
-  BusyBlock,
   BookedBlock,
+  BusyBlock,
   CalendarEvent,
-  TimeBlockInteraction,
   SlotInfo,
+  TimeBlock,
+  TimeBlockInteraction,
 } from "@/lib/types";
-import { isBusyBlock, isBookedBlock } from "@/lib/types";
+import { isBookedBlock, isBusyBlock } from "@/lib/types";
 
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
+import { saveAvailability } from "@/lib/actions/availability";
 import { localizer } from "@/lib/localizer";
 import { CalendarToolbar } from "./toolbar";
 

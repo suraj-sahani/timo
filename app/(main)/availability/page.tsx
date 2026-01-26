@@ -1,15 +1,15 @@
 import { auth } from "@clerk/nextjs/server";
 import { addWeeks, startOfWeek } from "date-fns";
 import { redirect } from "next/navigation";
+import { AvailabilityCalendar } from "@/components/calendar";
+import { ShareLinkDialog } from "@/components/calendar/share-link-dialog";
+import { RefreshButton } from "@/components/refresh-button";
 import { getGoogleBusyTimes } from "@/lib/actions/calendar";
 import { processBookingsWithStatuses } from "@/lib/booking";
 import type { BookedBlock, BusyBlock, TimeBlock } from "@/lib/types";
 import { sanityFetch } from "@/sanity/lib/live";
 import { HOST_UPCOMING_BOOKINGS_QUERY } from "@/sanity/queries/booking";
 import { USER_WITH_AVAILABILITY_QUERY } from "@/sanity/queries/user";
-import { RefreshButton } from "@/components/refresh-button";
-import { AvailabilityCalendar } from "@/components/calendar";
-import { ShareLinkDialog } from "@/components/calendar/share-link-dialog";
 
 export default async function AvailabilityPage() {
   const { userId } = await auth();
@@ -81,7 +81,7 @@ export default async function AvailabilityPage() {
     }));
 
   return (
-    <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 max-sm:py-4">
+    <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 max-sm:py-4">
       <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <h1 className="text-2xl font-bold">Set Your Availability</h1>
@@ -128,6 +128,6 @@ export default async function AvailabilityPage() {
         busyBlocks={initialBusyBlocks}
         bookedBlocks={bookedBlocks}
       />
-    </main>
+    </div>
   );
 }

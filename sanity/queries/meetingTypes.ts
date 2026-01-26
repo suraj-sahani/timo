@@ -1,5 +1,4 @@
 import { defineQuery } from "next-sanity";
-import type { MEETING_TYPES_BY_HOST_QUERYResult } from "@/sanity/types";
 
 /**
  * Get all meeting types for a host by their Clerk ID

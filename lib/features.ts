@@ -1,7 +1,7 @@
 import { auth, clerkClient } from "@clerk/nextjs/server";
+import { endOfMonth, startOfMonth } from "date-fns";
 import { client } from "@/sanity/lib/client";
-import { startOfMonth, endOfMonth } from "date-fns";
-import { BookingQuotaStatus, PlanType } from "./types";
+import type { BookingQuotaStatus, PlanType } from "./types";
 
 export const PLAN_LIMITS = {
   free: {

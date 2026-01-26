@@ -1,7 +1,7 @@
 "use client";
 
-import type { ToolbarProps, View } from "react-big-calendar";
 import { ChevronLeft, ChevronRight, Trash2 } from "lucide-react";
+import type { ToolbarProps, View } from "react-big-calendar";
 import { Button } from "@/components/ui/button";
 
 import type { TimeBlock } from "@/lib/types";
@@ -57,7 +57,12 @@ export function CalendarToolbar({
       </div>
 
       {/* Center: Current date label */}
-      <span className="text-lg font-semibold max-sm:text-sm">{label}</span>
+      <span
+        className="text-lg font-semibold max-sm:text-sm"
+        suppressHydrationWarning
+      >
+        {label}
+      </span>
 
       {/* Right: Actions + Navigation */}
       <div className="flex items-center gap-2">
