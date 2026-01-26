@@ -10,8 +10,7 @@ import {
   disconnectGoogleAccount,
   setDefaultCalendarAccount,
 } from "@/lib/actions/calendar";
-import type { PlanType } from "@/lib/features";
-import type { ConnectedAccountDisplay } from "@/sanity/queries/user";
+import type { ConnectedAccountDisplay, PlanType } from "@/lib/types";
 
 interface AccountManagerProps {
   connectedAccounts: ConnectedAccountDisplay[];

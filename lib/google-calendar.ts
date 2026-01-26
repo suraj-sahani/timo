@@ -1,10 +1,8 @@
 import { google } from "googleapis";
 import { client } from "@/sanity/lib/client";
 import { mutateClient } from "@/sanity/lib/mutate-client";
-import {
-  type ConnectedAccountWithTokens,
-  USER_ID_BY_ACCOUNT_KEY_QUERY,
-} from "@/sanity/queries/user";
+import { USER_ID_BY_ACCOUNT_KEY_QUERY } from "@/sanity/queries/user";
+import type { AttendeeStatus, ConnectedAccountWithTokens } from "./types";
 
 // OAuth2 client configuration
 export function createOAuth2Client() {
@@ -184,14 +182,6 @@ export async function revokeGoogleToken(accessToken: string) {
     // Continue anyway - the token will expire eventually
   }
 }
-
-// Attendee response status type
-export type AttendeeStatus =
-  | "accepted"
-  | "declined"
-  | "tentative"
-  | "needsAction"
-  | "unknown";
 
 // Get event attendee status from Google Calendar
 export async function getEventAttendeeStatus(

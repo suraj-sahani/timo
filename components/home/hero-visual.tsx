@@ -11,7 +11,7 @@ export function HeroVisual() {
               <div className="size-3 rounded-full bg-green-500" />
             </div>
             <div className="flex-1 text-center text-sm text-zinc-500">
-              scheduly.app/availability
+              Timo.app/availability
             </div>
           </div>
           <div className="grid gap-4 p-6 sm:grid-cols-3">

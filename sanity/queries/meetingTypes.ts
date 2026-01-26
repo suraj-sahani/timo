@@ -69,9 +69,6 @@ export const MEETING_TYPES_BY_HOST_SLUG_QUERY = defineQuery(`*[
   isDefault
 }`);
 
-// Uses same structure as MeetingTypeForHost since the projection is identical
-export type MeetingTypePublic = MeetingTypeForHost;
-
 /**
  * Get the host's Sanity _id by their Clerk ID (for creating meeting types)
  */

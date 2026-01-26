@@ -9,25 +9,6 @@
 
 import { defineQuery } from "next-sanity";
 
-import type {
-  HOST_BY_SLUG_WITH_TOKENS_QUERYResult,
-  USER_CONNECTED_ACCOUNTS_DISPLAY_QUERYResult,
-  USER_WITH_TOKENS_QUERYResult,
-} from "@/sanity/types";
-
-// Derived type from USER_WITH_TOKENS_QUERY result
-export type ConnectedAccountWithTokens = NonNullable<
-  NonNullable<USER_WITH_TOKENS_QUERYResult>["connectedAccounts"]
->[number];
-
-// Derived type for host with tokens (for booking actions)
-export type HostWithTokens = NonNullable<HOST_BY_SLUG_WITH_TOKENS_QUERYResult>;
-
-// Derived type for connected account display (without tokens)
-export type ConnectedAccountDisplay = NonNullable<
-  NonNullable<USER_CONNECTED_ACCOUNTS_DISPLAY_QUERYResult>["connectedAccounts"]
->[number];
-
 /**
  * Get a user by their Clerk ID
  */

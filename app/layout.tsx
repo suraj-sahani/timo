@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Timo Scheduling SasS",
+  title: "Timo",
   description: "Seemless scheduling of meetings with Timo",
 };
 

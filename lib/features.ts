@@ -1,6 +1,5 @@
 import { auth } from "@clerk/nextjs/server";
-
-export type PlanType = "free" | "starter" | "pro";
+import type { PlanType } from "./types";
 
 export const PLAN_LIMITS = {
   free: {

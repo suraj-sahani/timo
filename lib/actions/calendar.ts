@@ -4,17 +4,14 @@ import { auth } from "@clerk/nextjs/server";
 import { client } from "@/sanity/lib/client";
 import { mutateClient } from "@/sanity/lib/mutate-client";
 import { BOOKING_WITH_HOST_CALENDAR_QUERY } from "@/sanity/queries/booking";
+import { USER_WITH_TOKENS_QUERY } from "@/sanity/queries/user";
 import {
-  type ConnectedAccountWithTokens,
-  USER_WITH_TOKENS_QUERY,
-} from "@/sanity/queries/user";
-import {
-  type AttendeeStatus,
   fetchCalendarEvents,
   getCalendarClient,
   getEventAttendeeStatuses,
   revokeGoogleToken,
 } from "../google-calendar";
+import type { AttendeeStatus, ConnectedAccountWithTokens } from "../types";
 
 export type BusySlot = {
   start: string;
