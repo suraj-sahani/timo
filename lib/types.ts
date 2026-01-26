@@ -138,3 +138,24 @@ export interface TimeBlockInteraction {
   start: Date;
   end: Date;
 }
+
+// ============================================================================
+// Availability Types
+// ============================================================================
+
+export type AvailabilitySlot = {
+  _key: string;
+  startDateTime: string;
+  endDateTime: string;
+};
+
+export type BookingSlot = {
+  _id: string;
+  startTime: string;
+  endTime: string;
+};
+
+export type BusyTime = {
+  start: Date;
+  end: Date;
+};
