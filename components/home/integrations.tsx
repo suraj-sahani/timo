@@ -60,7 +60,7 @@ export function Integrations() {
             </ul>
           </div>
           <div className="relative">
-            <div className="absolute -inset-4 rounded-2xl bg-gradient-to-r from-blue-500/10 to-green-500/10 blur-xl" />
+            <div className="absolute -inset-4 rounded-2xl bg-linear-to-r from-blue-500/10 to-green-500/10 blur-xl" />
             <div className="relative overflow-hidden rounded-xl border bg-white p-6 shadow-lg dark:bg-zinc-800">
               <div className="flex items-center gap-3 border-b pb-4">
                 <div className="flex size-10 items-center justify-center rounded-lg bg-blue-500">

@@ -88,13 +88,13 @@ export function MostBookedDayCard() {
 
   return (
     <Card className="group relative overflow-hidden bg-white/80 backdrop-blur-sm border-zinc-200/60 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 h-full flex flex-col">
-      <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-amber-500/10 to-orange-500/5 rounded-bl-full" />
+      <div className="absolute top-0 right-0 w-24 h-24 bg-linear-to-br from-amber-500/10 to-orange-500/5 rounded-bl-full" />
 
       <CardHeader className="pb-2 flex flex-row items-center justify-between space-y-0">
         <CardTitle className="text-sm font-medium text-zinc-500">
           Most Booked Day
         </CardTitle>
-        <div className="flex size-9 items-center justify-center rounded-lg bg-gradient-to-br from-amber-100 to-amber-200/80 text-amber-700 shadow-sm">
+        <div className="flex size-9 items-center justify-center rounded-lg bg-linear-to-br from-amber-100 to-amber-200/80 text-amber-700 shadow-sm">
           <CalendarDaysIcon className="size-4" />
         </div>
       </CardHeader>
@@ -119,7 +119,7 @@ export function MostBookedDayCard() {
                 <div
                   className={`w-full rounded-sm transition-all duration-300 ${
                     isPopular
-                      ? "bg-gradient-to-t from-amber-500 to-orange-400"
+                      ? "bg-linear-to-t from-amber-500 to-orange-400"
                       : count > 0
                         ? "bg-amber-200"
                         : "bg-zinc-100"
@@ -136,7 +136,7 @@ export function MostBookedDayCard() {
               <span
                 className={`flex items-center justify-center size-4 ${
                   idx === mostPopularDayIndex
-                    ? "rounded-full bg-gradient-to-br from-amber-500 to-orange-500 text-white font-semibold"
+                    ? "rounded-full bg-linear-to-br from-amber-500 to-orange-500 text-white font-semibold"
                     : ""
                 }`}
               >

@@ -22,7 +22,7 @@ export function FeedbackSection() {
     <Card className="h-full bg-white/80 backdrop-blur-sm border-zinc-200/60 shadow-sm animate-in fade-in slide-in-from-right-4 duration-500 delay-150">
       <CardHeader className="pb-3 border-b border-zinc-100">
         <div className="flex items-center gap-3">
-          <div className="flex size-10 items-center justify-center rounded-xl bg-gradient-to-br from-amber-100 to-amber-200/80 text-amber-700 shadow-sm">
+          <div className="flex size-10 items-center justify-center rounded-xl bg-linear-to-br from-amber-100 to-amber-200/80 text-amber-700 shadow-sm">
             <MessageSquareTextIcon className="size-5" />
           </div>
           <div>
@@ -38,14 +38,14 @@ export function FeedbackSection() {
           <TabsList className="w-full bg-zinc-100/80 p-1">
             <TabsTrigger
               value="new"
-              className="flex-1 gap-2 data-[state=active]:bg-gradient-to-r data-[state=active]:from-amber-500 data-[state=active]:to-orange-500 data-[state=active]:text-white data-[state=active]:shadow-sm"
+              className="flex-1 gap-2 data-[state=active]:bg-linear-to-r data-[state=active]:from-amber-500 data-[state=active]:to-orange-500 data-[state=active]:text-white data-[state=active]:shadow-sm"
             >
               <InboxIcon className="size-4" />
               New
             </TabsTrigger>
             <TabsTrigger
               value="archived"
-              className="flex-1 gap-2 data-[state=active]:bg-gradient-to-r data-[state=active]:from-amber-500 data-[state=active]:to-orange-500 data-[state=active]:text-white data-[state=active]:shadow-sm"
+              className="flex-1 gap-2 data-[state=active]:bg-linear-to-r data-[state=active]:from-amber-500 data-[state=active]:to-orange-500 data-[state=active]:text-white data-[state=active]:shadow-sm"
             >
               <ArchiveIcon className="size-4" />
               Archived

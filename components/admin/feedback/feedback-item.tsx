@@ -75,7 +75,7 @@ export function FeedbackItem({
       }`}
     >
       {/* Avatar */}
-      <div className="flex size-9 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-amber-400 to-orange-500 text-white text-xs font-semibold shadow-sm">
+      <div className="flex size-9 shrink-0 items-center justify-center rounded-full bg-linear-to-br from-amber-400 to-orange-500 text-white text-xs font-semibold shadow-sm">
         {getInitials(displayData.userName)}
       </div>
 
