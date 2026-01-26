@@ -1,25 +1,25 @@
 "use server";
 
-import { mutateClient } from "@/sanity/lib/mutate-client";
-import { client } from "@/sanity/lib/client";
-import { HOST_BY_SLUG_WITH_TOKENS_QUERY } from "@/sanity/queries/user";
-import { BOOKINGS_IN_RANGE_QUERY } from "@/sanity/queries/booking";
-import { MEETING_TYPE_BY_SLUGS_QUERY } from "@/sanity/queries/meetingTypes";
 import {
-  getCalendarClient,
-  getEventAttendeeStatus,
-  fetchCalendarEvents,
-} from "@/lib/google-calendar";
-import { getHostBookingQuotaStatus } from "@/lib/features";
-import {
-  startOfDay,
-  endOfDay,
   addMinutes,
+  endOfDay,
   isWithinInterval,
   parseISO,
+  startOfDay,
 } from "date-fns";
 import { computeAvailableDates } from "@/lib/availability";
-import { HostWithTokens } from "../types";
+import { getHostBookingQuotaStatus } from "@/lib/features";
+import {
+  fetchCalendarEvents,
+  getCalendarClient,
+  getEventAttendeeStatus,
+} from "@/lib/google-calendar";
+import { client } from "@/sanity/lib/client";
+import { mutateClient } from "@/sanity/lib/mutate-client";
+import { BOOKINGS_IN_RANGE_QUERY } from "@/sanity/queries/booking";
+import { MEETING_TYPE_BY_SLUGS_QUERY } from "@/sanity/queries/meetingTypes";
+import { HOST_BY_SLUG_WITH_TOKENS_QUERY } from "@/sanity/queries/user";
+import type { HostWithTokens } from "../types";
 
 // ============================================================================
 // Types

@@ -1,10 +1,10 @@
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
+import { BookingsList } from "@/components/booking/booking-list";
+import { RefreshButton } from "@/components/refresh-button";
+import { processBookingsWithStatuses } from "@/lib/booking";
 import { sanityFetch } from "@/sanity/lib/live";
 import { HOST_BOOKINGS_BY_CLERK_ID_QUERY } from "@/sanity/queries/booking";
-import { processBookingsWithStatuses } from "@/lib/booking";
-import { RefreshButton } from "@/components/refresh-button";
-import { BookingsList } from "@/components/booking/booking-list";
 
 export default async function BookingsPage() {
   const { userId } = await auth();
