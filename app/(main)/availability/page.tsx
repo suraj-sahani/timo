@@ -7,6 +7,9 @@ import type { BookedBlock, BusyBlock, TimeBlock } from "@/lib/types";
 import { sanityFetch } from "@/sanity/lib/live";
 import { HOST_UPCOMING_BOOKINGS_QUERY } from "@/sanity/queries/booking";
 import { USER_WITH_AVAILABILITY_QUERY } from "@/sanity/queries/user";
+import { RefreshButton } from "@/components/refresh-button";
+import { AvailabilityCalendar } from "@/components/calendar";
+import { ShareLinkDialog } from "@/components/calendar/share-link-dialog";
 
 export default async function AvailabilityPage() {
   const { userId } = await auth();
@@ -78,8 +81,53 @@ export default async function AvailabilityPage() {
     }));
 
   return (
-    <section>
-      <h1>Availability Page</h1>
-    </section>
+    <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 max-sm:py-4">
+      <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+        <div>
+          <h1 className="text-2xl font-bold">Set Your Availability</h1>
+          <p className="mt-1 text-muted-foreground">
+            Drag to create time blocks. Click a block to remove it. Changes save
+            automatically.
+          </p>
+          <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted-foreground">
+            {bookedBlocks.length > 0 && (
+              <>
+                <span className="flex items-center gap-1">
+                  <span className="inline-block w-3 h-3 bg-green-600 rounded" />
+                  Accepted
+                </span>
+                <span className="flex items-center gap-1">
+                  <span className="inline-block w-3 h-3 bg-amber-500 rounded" />
+                  Tentative
+                </span>
+                <span className="flex items-center gap-1">
+                  <span className="inline-block w-3 h-3 bg-red-500 rounded" />
+                  Declined
+                </span>
+                <span className="flex items-center gap-1">
+                  <span className="inline-block w-3 h-3 bg-gray-500 rounded" />
+                  Pending
+                </span>
+              </>
+            )}
+            {initialBusyBlocks.length > 0 && (
+              <span className="flex items-center gap-1">
+                <span className="inline-block w-3 h-3 bg-red-200 border border-red-400 rounded" />
+                Busy (external)
+              </span>
+            )}
+          </div>
+        </div>
+        <div className="flex gap-2">
+          <RefreshButton />
+          <ShareLinkDialog />
+        </div>
+      </div>
+      <AvailabilityCalendar
+        initialBlocks={initialBlocks}
+        busyBlocks={initialBusyBlocks}
+        bookedBlocks={bookedBlocks}
+      />
+    </main>
   );
 }

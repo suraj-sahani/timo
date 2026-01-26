@@ -16,9 +16,6 @@ export const MEETING_TYPES_BY_HOST_QUERY = defineQuery(`*[
   isDefault
 }`);
 
-export type MeetingTypeForHost =
-  NonNullable<MEETING_TYPES_BY_HOST_QUERYResult>[number];
-
 /**
  * Get a specific meeting type by host slug and meeting type slug
  */

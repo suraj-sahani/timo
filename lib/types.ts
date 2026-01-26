@@ -1,8 +1,8 @@
-import type { MeetingTypeForHost } from "@/sanity/queries/meetingTypes";
 import type {
   HOST_BOOKINGS_BY_CLERK_ID_QUERYResult,
   HOST_BY_SLUG_WITH_TOKENS_QUERYResult,
   HOST_UPCOMING_BOOKINGS_QUERYResult,
+  MEETING_TYPES_BY_HOST_QUERYResult,
   USER_CONNECTED_ACCOUNTS_DISPLAY_QUERYResult,
   USER_WITH_TOKENS_QUERYResult,
 } from "@/sanity/types";
@@ -55,10 +55,19 @@ export type HostBooking =
 export type HostUpcomingBooking =
   NonNullable<HOST_UPCOMING_BOOKINGS_QUERYResult>[number];
 
+export type BookingQuotaStatus = {
+  used: number;
+  limit: number;
+  remaining: number;
+  isExceeded: boolean;
+  plan: PlanType;
+};
+
 // ============================================================================
 // Meeting Types
 // ============================================================================
-
+export type MeetingTypeForHost =
+  NonNullable<MEETING_TYPES_BY_HOST_QUERYResult>[number];
 // Uses same structure as MeetingTypeForHost since the projection is identical
 export type MeetingTypePublic = MeetingTypeForHost;
 
