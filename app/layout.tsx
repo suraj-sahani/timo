@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import Providers from "@/providers";
+import AppProviders from "@/providers/app-provider";
 import "./globals.css";
 import { TimezoneDetector } from "@/components/timezone-detector";
 import { SanityLive } from "@/sanity/lib/live";
@@ -26,7 +26,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <Providers>
+    <AppProviders>
       <html lang="en">
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
@@ -36,6 +36,6 @@ export default function RootLayout({
           <TimezoneDetector />
         </body>
       </html>
-    </Providers>
+    </AppProviders>
   );
 }

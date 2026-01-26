@@ -1,5 +1,9 @@
 import { ClerkProvider } from "@clerk/nextjs";
 
-export default function Providers({ children }: { children: React.ReactNode }) {
+export default function AppProviders({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return <ClerkProvider>{children}</ClerkProvider>;
 }
