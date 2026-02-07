@@ -1,17 +1,12 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import AppProviders from "@/providers/app-provider";
-import "./globals.css";
 import { TimezoneDetector } from "@/components/timezone-detector";
+import AppProviders from "@/providers/app-provider";
 import { SanityLive } from "@/sanity/lib/live";
+import type { Metadata } from "next";
+import { Lexend } from "next/font/google";
+import "./globals.css";
 
-const geistSans = Geist({
+const lexend = Lexend({
   variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
   subsets: ["latin"],
 });
 
@@ -28,9 +23,7 @@ export default function RootLayout({
   return (
     <AppProviders>
       <html lang="en">
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        >
+        <body className={`${lexend.className}  antialiased`}>
           {children}
           <SanityLive />
           <TimezoneDetector />

@@ -44,7 +44,10 @@
   --radius-2xl: calc(var(--radius) + 8px);
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
-}
+
+   --shadow-100:  0px 8px 24px rgba(149, 157, 165, 0.2);
+   --shadow-200:   0px 7px 29px 0px rgba(100, 100, 111, 0.2);
+ }
 
 :root {
   --radius: 0.625rem;
@@ -54,9 +57,9 @@
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
+  --primary: oklch(0.6739 0.1476 36.33);
   --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
+  --secondary: oklch(0.2591 0.0049 39.4);
   --secondary-foreground: oklch(0.205 0 0);
   --muted: oklch(0.97 0 0);
   --muted-foreground: oklch(0.556 0 0);
