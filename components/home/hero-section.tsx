@@ -37,7 +37,7 @@ export default function HeroSection() {
                 <Button
                   variant="outline"
                   size="lg"
-                  className="w-full text-base sm:w-auto"
+                  className="w-full text-base sm:w-auto rounded-full border-2"
                 >
                   Sign In
                 </Button>

@@ -1,10 +1,12 @@
 import { SignedIn, SignedOut, SignUpButton } from "@clerk/nextjs";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { BGPattern } from "../bg-pattern";
 
 export function CTASection() {
   return (
-    <section className="bg-blue-500 py-20 sm:py-24">
+    <section className="bg-secondary-800 py-20 sm:py-24">
+      {/* <BGPattern variant="grid" mask="fade-edges" fill="#fff" /> */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
@@ -18,7 +20,7 @@ export function CTASection() {
               <SignUpButton mode="modal">
                 <Button
                   size="lg"
-                  className="bg-white text-base text-blue-600 hover:bg-blue-50"
+                  className="bg-primary text-base text-white hover:bg-primary-100 hover:text-primary-800 rounded-full"
                 >
                   Get Started Free
                 </Button>
@@ -28,7 +30,7 @@ export function CTASection() {
               <Button
                 asChild
                 size="lg"
-                className="bg-white text-base text-blue-600 hover:bg-blue-50"
+                className="bg-primary rounded-full text-base text-white hover:bg-primary-100 hover:text-primary-800"
               >
                 <Link href="/availability">Go to Dashboard</Link>
               </Button>

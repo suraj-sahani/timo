@@ -6,7 +6,7 @@ export default function HomeHeader() {
   return (
     <header className="fixed top-0 z-50 w-full py-4">
       <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-4 sm:px-6  rounded-full border-2 border-gray-200/50 shadow-100 bg-white">
-        <div className="flex items-center gap-8">
+        <div className="flex items-center gap-4 lg:gap-8">
           <Link href="/" className="flex items-center gap-1">
             <svg
               viewBox="0 0 24 24"

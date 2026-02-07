@@ -4,6 +4,7 @@ import FlexibleTimings from "@/public/flexible_timing.webp";
 import GoogleMeet from "@/public/google_meet.webp";
 import MultipleAccountSync from "@/public/multiple_account_sync.gif";
 import RealTimeSync from "@/public/real_time_sync.webp";
+import GoogleLogo from "@/public/google.svg";
 
 export {
   DragDrop,
@@ -12,4 +13,5 @@ export {
   FlexipleTimezone,
   RealTimeSync,
   FlexibleTimings,
+  GoogleLogo
 };

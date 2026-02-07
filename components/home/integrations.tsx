@@ -1,4 +1,6 @@
+import { GoogleLogo } from "@/public";
 import { Calendar, Link2, Shield, Users, Video } from "lucide-react";
+import Image from "next/image";
 
 const integrationFeatures = [
   { icon: Shield, text: "Secure OAuth 2.0 authentication" },
@@ -33,12 +35,51 @@ export function Integrations() {
   return (
     <section className="py-20 sm:py-32">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto grid max-w-5xl items-center gap-12 lg:grid-cols-2">
+        <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2">
+          <div className="relative overflow-hidden rounded-4xl border-3 border-secondary-100/20 bg-white p-4 shadow-100">
+            <div className="flex items-center gap-3 border-b pb-4">
+              <div className="flex size-10 items-center justify-center rounded-lg">
+                <Image
+                  src={GoogleLogo}
+                  alt="google logo"
+                  height={50}
+                  width={50}
+                />
+              </div>
+              <div>
+                <div className="font-semibold text-zinc-900">
+                  Google Calendar
+                </div>
+                <div className="mt-0.5 py-0.5 px-1 text-xs bg-green-500/30 w-fit rounded-full animate-pulse font-medium text-green-600">
+                  Connected
+                </div>
+              </div>
+            </div>
+            <div className="mt-4 space-y-3">
+              {calendarEvents.map((slot) => (
+                <div
+                  key={slot.time}
+                  className="flex items-center gap-3 rounded-xl border bg-secondary-100/25 p-4 group"
+                >
+                  <div
+                    className={`size-2 rounded-full ${getColorClass(slot.color)}`}
+                  />
+                  <div className="text-sm font-medium text-zinc-500">
+                    {slot.time}
+                  </div>
+                  <div className="text-md text-secondary-600 font-semibold group-hover:translate-x-2 duration-200 ease-in-out">
+                    {slot.event}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
           <div>
-            <h2 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-white">
+            <h2 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl">
               Seamless Google Calendar integration
             </h2>
-            <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400">
+            <p className="mt-4 text-lg text-secondary-300">
               Connect multiple Google accounts and let Timo do the heavy
               lifting. Your busy times are automatically blocked, and new
               bookings create calendar events with video links.
@@ -48,50 +89,16 @@ export function Integrations() {
                 const Icon = item.icon;
                 return (
                   <li key={item.text} className="flex items-center gap-3">
-                    <div className="flex size-8 items-center justify-center rounded-full bg-green-500/10">
+                    <div className="flex p-2 items-center justify-center rounded-full bg-green-500/10">
                       <Icon className="size-4 text-green-600" />
                     </div>
-                    <span className="text-zinc-700 dark:text-zinc-300">
+                    <span className="text-secondary-700 text-sm font-medium ">
                       {item.text}
                     </span>
                   </li>
                 );
               })}
             </ul>
-          </div>
-          <div className="relative">
-            <div className="absolute -inset-4 rounded-2xl bg-linear-to-r from-blue-500/10 to-green-500/10 blur-xl" />
-            <div className="relative overflow-hidden rounded-xl border bg-white p-6 shadow-lg dark:bg-zinc-800">
-              <div className="flex items-center gap-3 border-b pb-4">
-                <div className="flex size-10 items-center justify-center rounded-lg bg-blue-500">
-                  <Calendar className="size-5 text-white" />
-                </div>
-                <div>
-                  <div className="font-semibold text-zinc-900 dark:text-white">
-                    Google Calendar
-                  </div>
-                  <div className="text-sm text-green-600">Connected</div>
-                </div>
-              </div>
-              <div className="mt-4 space-y-3">
-                {calendarEvents.map((slot) => (
-                  <div
-                    key={slot.time}
-                    className="flex items-center gap-3 rounded-lg border bg-zinc-50 p-3 dark:bg-zinc-900"
-                  >
-                    <div
-                      className={`size-2 rounded-full ${getColorClass(slot.color)}`}
-                    />
-                    <div className="text-sm font-medium text-zinc-500 dark:text-zinc-400">
-                      {slot.time}
-                    </div>
-                    <div className="text-sm text-zinc-900 dark:text-white">
-                      {slot.event}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
           </div>
         </div>
       </div>
