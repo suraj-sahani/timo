@@ -24,7 +24,7 @@ export function FeatureCard({
   image,
 }: FeatureCardProps) {
   return (
-    <Card className="border-secondary-200/20 border-2 transition-shadow hover:shadow-100 p-1 gap-2 group">
+    <Card className="border-primary-700/10 border-3 transition-shadow hover:shadow-100 p-1 gap-2 group">
       <CardHeader className="p-1">
         <Activity mode={image ? "visible" : "hidden"}>
           <Image
