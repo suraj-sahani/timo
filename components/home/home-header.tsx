@@ -1,5 +1,4 @@
 import { SignedIn, SignedOut, SignInButton, SignUpButton } from "@clerk/nextjs";
-import { Calendar } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
@@ -14,6 +13,8 @@ export default function HomeHeader() {
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
               className="size-8"
+              role="img"
+              aria-label="calender"
             >
               <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
               <g
@@ -41,7 +42,7 @@ export default function HomeHeader() {
               </g>
             </svg>
 
-            <span className="text-xl font-bold tracking-tight text-zinc-900 dark:text-white">
+            <span className="text-xl font-bold tracking-tight text-primary-900">
               Timo
             </span>
           </Link>
@@ -67,14 +68,18 @@ export default function HomeHeader() {
             <SignUpButton mode="modal">
               <Button
                 size="sm"
-                className="bg-secondary rounded-full hover:bg-blue-600"
+                className="bg-secondary rounded-full hover:bg-primary hover:text-white border-2 duration-150 ease-in-out"
               >
                 Get Started
               </Button>
             </SignUpButton>
           </SignedOut>
           <SignedIn>
-            <Button asChild size="sm" className="bg-blue-500 hover:bg-blue-600">
+            <Button
+              asChild
+              size="sm"
+              className="bg-secondary hover:bg-primary rounded-full"
+            >
               <Link href="/availability">Dashboard</Link>
             </Button>
           </SignedIn>

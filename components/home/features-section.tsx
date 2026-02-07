@@ -6,6 +6,14 @@ import {
   Video,
   Zap,
 } from "lucide-react";
+import {
+  DragDrop,
+  FlexibleTimings,
+  FlexipleTimezone,
+  GoogleMeet,
+  MultipleAccountSync,
+  RealTimeSync,
+} from "@/public";
 import { FeatureCard } from "./feature-card";
 
 const features = [
@@ -14,36 +22,42 @@ const features = [
     title: "Smart Availability",
     description:
       "Set your availability with an intuitive drag-and-drop calendar. Create time blocks visually and let Timo handle the rest.",
-  },
-  {
-    icon: Video,
-    title: "Google Calendar Sync",
-    description:
-      "Connect multiple Google accounts to automatically sync busy times and prevent double bookings across all your calendars.",
-  },
-  {
-    icon: Zap,
-    title: "Instant Google Meet",
-    description:
-      "Every booking automatically generates a Google Meet link. No manual setup required for your video meetings.",
-  },
-  {
-    icon: Clock,
-    title: "Flexible Meeting Types",
-    description:
-      "Create different meeting types with custom durations. Quick 15-minute chats or deep 90-minute consultations.",
-  },
-  {
-    icon: Globe,
-    title: "Timezone Intelligence",
-    description:
-      "Automatic timezone detection shows guests availability in their local time. No confusion, no missed meetings.",
+    image: DragDrop.src,
   },
   {
     icon: CalendarCheck,
     title: "Real-Time Updates",
     description:
       "Track booking status with live attendee responses. See who accepted, declined, or is still deciding.",
+    image: RealTimeSync.src,
+  },
+  {
+    icon: Video,
+    title: "Google Calendar Sync",
+    description:
+      "Connect multiple Google accounts to automatically sync busy times and prevent double bookings across all your calendars.",
+    image: MultipleAccountSync.src,
+  },
+  {
+    icon: Zap,
+    title: "Instant Google Meet",
+    description:
+      "Every booking automatically generates a Google Meet link. No manual setup required for your video meetings.",
+    image: GoogleMeet.src,
+  },
+  {
+    icon: Clock,
+    title: "Flexible Meeting Types",
+    description:
+      "Create different meeting types with custom durations. Quick 15-minute chats or deep 90-minute consultations.",
+    image: FlexibleTimings.src,
+  },
+  {
+    icon: Globe,
+    title: "Timezone Intelligence",
+    description:
+      "Automatic timezone detection shows guests availability in their local time. No confusion, no missed meetings.",
+    image: FlexipleTimezone.src,
   },
 ];
 
@@ -62,12 +76,14 @@ export function FeaturesSection() {
         </div>
 
         <div className="mx-auto mt-16 grid max-w-5xl gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {features.map((feature) => (
+          {features.map((feature, index) => (
             <FeatureCard
+              index={index}
               key={feature.title}
               icon={feature.icon}
               title={feature.title}
               description={feature.description}
+              image={feature.image}
             />
           ))}
         </div>

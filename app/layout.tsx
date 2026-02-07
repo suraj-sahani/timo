@@ -1,8 +1,8 @@
+import type { Metadata } from "next";
+import { Lexend } from "next/font/google";
 import { TimezoneDetector } from "@/components/timezone-detector";
 import AppProviders from "@/providers/app-provider";
 import { SanityLive } from "@/sanity/lib/live";
-import type { Metadata } from "next";
-import { Lexend } from "next/font/google";
 import "./globals.css";
 
 const lexend = Lexend({

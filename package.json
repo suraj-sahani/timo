@@ -8,6 +8,7 @@
     "start": "next start",
     "lint:check": "biome check",
     "format:fix": "biome format --write",
+    "lint:fix": "biome lint --fix",
     "format:lint": "biome check --write",
     "typecheck": "tsc --noEmit",
     "typegen": "sanity schema extract --enforce-required-fields && sanity typegen generate"
