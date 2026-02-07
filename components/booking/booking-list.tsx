@@ -89,7 +89,7 @@ export function BookingsList({ bookings }: BookingsListProps) {
 
       {/* Bookings List */}
       {activeBookings.length === 0 ? (
-        <div className="rounded-lg border border-dashed p-8 text-center">
+        <div className="rounded-xl border-3 border-secondary-100/50 border-dashed p-8 text-center">
           <Calendar className="mx-auto h-12 w-12 text-muted-foreground/50 mb-4" />
           <p className="text-muted-foreground">No upcoming bookings</p>
           <p className="text-sm text-muted-foreground mt-1">

@@ -255,7 +255,10 @@ export function AvailabilityCalendar({
   );
 
   return (
-    <div className="relative h-[calc(100vh-180px)] min-h-100 sm:min-h-150">
+    <div
+      className="relative h-[calc(100vh-180px)] min-h-100 sm:min-h-150"
+      suppressHydrationWarning
+    >
       {/* Booking Details Dialog */}
       <Dialog
         open={!!selectedBooking}

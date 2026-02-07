@@ -34,7 +34,7 @@ export function FeedbackForm() {
 
   if (submitted) {
     return (
-      <Card className="w-full max-w-md shadow-lg border-0">
+      <Card className="w-full max-w-md shadow-100 border-0">
         <CardContent className="flex flex-col items-center justify-center py-16">
           <div className="mb-4 flex size-16 items-center justify-center rounded-full bg-green-100">
             <CheckCircle2 className="size-8 text-green-600" />
@@ -49,10 +49,10 @@ export function FeedbackForm() {
   }
 
   return (
-    <Card className="w-full max-w-md shadow-lg border-0">
-      <CardHeader className="text-center pb-2">
-        <div className="mx-auto mb-4 flex size-14 items-center justify-center rounded-full bg-blue-100">
-          <MessageSquare className="size-7 text-blue-600" />
+    <Card className="w-full max-w-md shadow-100 border-3 border-secondary-100/50 p-2 rounded-4xl">
+      <CardHeader className="text-center pb-2 p-2">
+        <div className="mx-auto mb-4 flex size-14 items-center justify-center rounded-full bg-primary-100">
+          <MessageSquare className="size-7 text-secondary" />
         </div>
         <CardTitle className="text-2xl font-semibold">
           Feature Feedback
@@ -62,18 +62,18 @@ export function FeedbackForm() {
           Calvero better for you.
         </CardDescription>
       </CardHeader>
-      <CardContent className="space-y-4 pt-4">
+      <CardContent className="space-y-4 pt-4 p-2">
         <Textarea
           placeholder="I'd love to see a feature that..."
           value={content}
           onChange={(e) => setContent(e.target.value)}
           rows={5}
-          className="resize-none border-gray-200 focus:border-blue-500 focus:ring-blue-500"
+          className="resize-none border-gray-200 focus:border-seconadry-500 focus:ring-seconadry-500"
         />
         <Button
           onClick={handleSubmit}
           disabled={isPending || !content.trim()}
-          className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-5"
+          className="w-full bg-primary hover:bg-primary-700 text-white font-medium py-5 rounded-full"
         >
           {isPending ? "Submitting..." : "Submit Feedback"}
         </Button>
