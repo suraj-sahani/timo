@@ -1,3 +1,4 @@
+import type { clerkClient } from "@clerk/nextjs/server";
 import type {
   HOST_BOOKINGS_BY_CLERK_ID_QUERYResult,
   HOST_BY_SLUG_WITH_TOKENS_QUERYResult,
@@ -159,3 +160,9 @@ export type BusyTime = {
   start: Date;
   end: Date;
 };
+
+type ClerkClient = Awaited<ReturnType<typeof clerkClient>>;
+
+export type BillingPlan = Awaited<
+  ReturnType<Awaited<ClerkClient["billing"]["getPlanList"]>>
+>["data"][number];

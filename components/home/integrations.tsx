@@ -1,6 +1,6 @@
-import { GoogleLogo } from "@/public";
 import { Calendar, Link2, Shield, Users, Video } from "lucide-react";
 import Image from "next/image";
+import { GoogleLogo } from "@/public";
 
 const integrationFeatures = [
   { icon: Shield, text: "Secure OAuth 2.0 authentication" },
