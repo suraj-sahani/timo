@@ -1,5 +1,5 @@
 import { auth } from "@clerk/nextjs/server";
-import { CreditCard } from "lucide-react";
+import { ArrowUpRight, CreditCard } from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { AccountManager } from "@/components/settings/account-manager";
@@ -73,11 +73,11 @@ export default async function SettingsPage({
         <h2 className="text-lg font-semibold mb-4">Billing</h2>
         <Link
           href="/pricing"
-          className="flex items-center justify-between rounded-lg border p-4 transition-colors hover:bg-zinc-50 dark:hover:bg-zinc-900"
+          className="flex items-center justify-between rounded-xl border-2 p-4 transition-colors hover:bg-zinc-50 dark:hover:bg-zinc-900"
         >
           <div className="flex items-center gap-3">
-            <div className="flex size-10 items-center justify-center rounded-lg bg-blue-500/10">
-              <CreditCard className="size-5 text-blue-500" />
+            <div className="flex size-10 items-center justify-center rounded-lg bg-primary-600/10">
+              <CreditCard className="size-5 text-primary-500" />
             </div>
             <div>
               <p className="font-medium">Manage Subscription</p>
@@ -86,7 +86,7 @@ export default async function SettingsPage({
               </p>
             </div>
           </div>
-          <span className="text-muted-foreground">&rarr;</span>
+          <ArrowUpRight className="size-6 text-secondary-400" />
         </Link>
       </div>
     </div>

@@ -49,10 +49,10 @@ export function FeedbackForm() {
   }
 
   return (
-    <Card className="w-full max-w-md shadow-100 border-3 border-secondary-100/50 p-2 rounded-4xl">
+    <Card className="w-full max-w-md shadow-100! hover:shadow-200! transition-all duration-200 ease-in-out border-3 border-secondary-100/50 p-2 rounded-4xl">
       <CardHeader className="text-center pb-2 p-2">
         <div className="mx-auto mb-4 flex size-14 items-center justify-center rounded-full bg-primary-100">
-          <MessageSquare className="size-7 text-secondary" />
+          <MessageSquare className="size-7 text-primary-600" />
         </div>
         <CardTitle className="text-2xl font-semibold">
           Feature Feedback

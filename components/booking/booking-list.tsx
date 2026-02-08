@@ -104,15 +104,16 @@ export function BookingsList({ bookings }: BookingsListProps) {
             const isTodayBooking = isToday(startTime);
 
             return (
-              <Card key={booking._id} className="overflow-hidden">
+              <Card
+                key={booking._id}
+                className="overflow-hidden p-0 rounded-4xl shadow-100! border-3 border-primary-100/50"
+              >
                 <CardContent className="p-0">
                   <div className="flex flex-col md:flex-row">
                     {/* Date column */}
                     <div
                       className={`flex flex-col items-center justify-center p-4 md:p-6 md:w-32 ${
-                        isTodayBooking
-                          ? "bg-blue-50 dark:bg-blue-950"
-                          : "bg-slate-50 dark:bg-slate-900"
+                        isTodayBooking ? "bg-primary-100" : "bg-primary-100/50"
                       }`}
                     >
                       <span className="text-sm font-medium text-muted-foreground">
@@ -125,7 +126,7 @@ export function BookingsList({ bookings }: BookingsListProps) {
                         {format(startTime, "EEE")}
                       </span>
                       {isTodayBooking && (
-                        <span className="mt-2 text-xs font-medium text-blue-600 bg-blue-100 px-2 py-0.5 rounded-full">
+                        <span className="mt-2 text-xs font-medium text-primary-600 bg-blue-100 px-2 py-0.5 rounded-full">
                           Today
                         </span>
                       )}
@@ -155,7 +156,7 @@ export function BookingsList({ bookings }: BookingsListProps) {
                             <Mail className="h-4 w-4 text-muted-foreground" />
                             <a
                               href={`mailto:${booking.guestEmail}`}
-                              className="text-blue-600 hover:underline"
+                              className="text-primary-600 hover:underline"
                             >
                               {booking.guestEmail}
                             </a>
@@ -175,7 +176,7 @@ export function BookingsList({ bookings }: BookingsListProps) {
                               href={booking.meetLink}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="inline-flex items-center gap-2 text-sm font-medium text-blue-600 hover:underline"
+                              className="inline-flex items-center gap-2 text-sm font-medium text-primary-600 hover:underline"
                             >
                               <Video className="h-4 w-4" />
                               Join Google Meet
@@ -197,7 +198,7 @@ export function BookingsList({ bookings }: BookingsListProps) {
                             size="sm"
                             onClick={() => handleCancel(booking._id)}
                             disabled={isPending}
-                            className="text-red-600 hover:text-red-700 hover:bg-red-50"
+                            className="text-red-600 hover:text-red-700 hover:bg-red-50 rounded-full border-secondary-100/50 border-2"
                           >
                             {cancellingId === booking._id ? (
                               <Loader2 className="h-4 w-4 animate-spin" />

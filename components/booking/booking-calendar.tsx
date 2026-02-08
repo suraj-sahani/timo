@@ -84,6 +84,13 @@ export function BookingCalendar({
   // Get current slots
   const availableSlots = date ? getSlotsForDate(date) : [];
 
+  console.log({
+    available: hasAvailability(today),
+    availableDates,
+    currentDay: format(today, "yyyy-MM-dd"),
+    availableSlots,
+  });
+
   const handleDateSelect = (newDate: Date | undefined) => {
     setDate(newDate);
     setSelectedSlot(null);

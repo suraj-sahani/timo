@@ -1,5 +1,5 @@
 import { TZDate } from "@date-fns/tz";
-import { parseISO, startOfDay } from "date-fns";
+import { format, parseISO, startOfDay } from "date-fns";
 import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
 import { BookingCalendar } from "@/components/booking/booking-calendar";
@@ -158,16 +158,15 @@ export default async function MeetingTypeBookingPage({
     // Group each slot by its date in the VISITOR'S timezone
     for (const slot of slots) {
       // Format date key using visitor's timezone (e.g., "2024-01-15")
-      const localDateKey = new TZDate(
-        slot.start,
-        visitorTimezone,
-      ).toLocaleDateString();
+      const localDateKey = new TZDate(slot.start, visitorTimezone);
 
-      if (!slotsByDate[localDateKey]) {
-        slotsByDate[localDateKey] = [];
+      const formattedLocalDateKey = format(localDateKey, "yyyy-MM-dd");
+
+      if (!slotsByDate[formattedLocalDateKey]) {
+        slotsByDate[formattedLocalDateKey] = [];
       }
 
-      slotsByDate[localDateKey].push({
+      slotsByDate[formattedLocalDateKey].push({
         start: slot.start.toISOString(),
         end: slot.end.toISOString(),
       });

@@ -146,3 +146,99 @@
 @utility animate-rotate {
   animation: rotate-180-swing 5s ease-in-out infinite;
 }
+
+/* React Big Calendar - minimal overrides */
+.rbc-calendar {
+  font-family: inherit;
+}
+
+.rbc-event {
+  @apply bg-primary-100! text-secondary-600! flex-nowrap! border-3! border-primary-300! rounded-2xl! min-h-fit! min-w-full! p-1.5! z-5;
+}
+
+.rbc-event-content{
+  @apply min-h-fit!;
+}
+
+/* Increase time slot height for better visibility */
+.rbc-timeslot-group {
+  min-height: 80px !important; /* Default is ~40px, doubling it */
+}
+
+.rbc-time-slot {
+  min-height: 20px !important; /* Each 15-min slot */
+}
+
+/* Hide all-day section - not needed for availability */
+.rbc-allday-cell {
+  display: none !important; 
+}
+/* Day headers in week/day views */
+.rbc-time-view .rbc-row.rbc-time-header-cell .rbc-header,
+.rbc-time-view .rbc-header {
+  border-bottom: 1px solid var(--border) !important;
+  padding: 16px 8px !important;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+}
+
+/* Mobile responsive calendar styles */
+@media (max-width: 640px) {
+  /* Reduce slot height on mobile */
+  .rbc-timeslot-group {
+    min-height: 60px !important;
+  }
+
+  .rbc-time-slot {
+    min-height: 15px !important;
+  }
+
+  /* Consistent time gutter width on mobile */
+  .rbc-time-gutter,
+  .rbc-time-header-gutter {
+    min-width: 50px !important;
+    max-width: 50px !important;
+    flex: 0 0 50px !important;
+  }
+
+  .rbc-time-gutter .rbc-label {
+    font-size: 0.65rem !important;
+    padding: 0 4px !important;
+  }
+
+  /* Smaller day headers */
+  .rbc-time-view .rbc-header {
+    font-size: 0.7rem !important;
+    padding: 8px 2px !important;
+  }
+
+  /* Compact events on mobile */
+  .rbc-event {
+    font-size: 0.65rem !important;
+    padding: 1px 3px !important;
+  }
+
+  .rbc-event-label {
+    font-size: 0.6rem !important;
+  }
+
+  /* Month view adjustments */
+  .rbc-month-view .rbc-date-cell {
+    font-size: 0.75rem !important;
+    padding: 2px !important;
+  }
+
+  .rbc-month-row {
+    min-height: 60px !important;
+  }
+
+  /* Touch-friendly resize handles */
+  .rbc-addons-dnd .rbc-addons-dnd-resize-ns-anchor {
+    height: 12px !important;
+  }
+
+  /* Smaller show more button */
+  .rbc-show-more {
+    font-size: 0.65rem !important;
+  }
+}

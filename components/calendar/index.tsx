@@ -264,7 +264,7 @@ export function AvailabilityCalendar({
         open={!!selectedBooking}
         onOpenChange={(open) => !open && setSelectedBooking(null)}
       >
-        <DialogContent className="sm:max-w-md">
+        <DialogContent className="sm:max-w-md rounded-2xl">
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
               <div

@@ -373,7 +373,7 @@ export function ShareLinkDialog() {
                       <Button
                         type="button"
                         onClick={handleCopy}
-                        className="flex-1"
+                        className="flex-1 rounded-full"
                         variant={copied ? "outline" : "default"}
                         disabled={isPending}
                       >
@@ -393,7 +393,7 @@ export function ShareLinkDialog() {
                         type="button"
                         variant="outline"
                         onClick={handleVisit}
-                        className="flex-1"
+                        className="flex-1 rounded-full"
                         disabled={isPending}
                       >
                         <ExternalLink className="mr-2 h-4 w-4" />

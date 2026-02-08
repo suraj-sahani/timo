@@ -67,7 +67,7 @@ export function AccountManager({
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between gap-4">
         <div>
           <h2 className="text-lg font-semibold">Connected Google Accounts</h2>
           <p className="text-sm text-muted-foreground">
@@ -80,7 +80,7 @@ export function AccountManager({
           )}
         </div>
         {isAtLimit ? (
-          <Button asChild>
+          <Button asChild className="rounded-full">
             <Link href="/pricing">
               Unlock more
               <ArrowRight className="ml-1 h-4 w-4" />
@@ -106,7 +106,7 @@ export function AccountManager({
           {connectedAccounts.map((account) => (
             <div
               key={account._key}
-              className="flex items-center justify-between rounded-lg border p-4"
+              className="flex items-center justify-between rounded-xl border-2 p-4"
             >
               <div className="flex items-center gap-3">
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100">
@@ -152,7 +152,7 @@ export function AccountManager({
                   size="sm"
                   onClick={() => handleDisconnect(account._key)}
                   disabled={isPending}
-                  className="text-red-600 hover:text-red-700 hover:bg-red-50"
+                  className="text-red-600 hover:text-red-700 hover:bg-red-50 rounded-full"
                 >
                   {pendingAction === `disconnect-${account._key}` ? (
                     <Loader2 className="h-4 w-4 animate-spin" />
@@ -169,7 +169,7 @@ export function AccountManager({
         </div>
       )}
 
-      <div className="rounded-lg bg-muted/50 p-4">
+      <div className="rounded-xl bg-secondary-100/20 p-4">
         <h3 className="font-medium">How it works</h3>
         <ul className="mt-2 space-y-1 text-sm text-muted-foreground">
           <li>
